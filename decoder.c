@@ -146,16 +146,18 @@ void print_arp(arp_packet_t *arp){
     printf("\thlen:\t%d\n", arp->arp_hdr.hlen);
     printf("\tplen:\t%d\n", arp->arp_hdr.plen);
     printf("\top:\t%d (%s)\n", arp->arp_hdr.op, arp->arp_hdr.op==1?"ARP REQUEST":"ARP RESPONSE");
-    char* ip;
-    char* mac;
-    ip_toStr(arp->arp_hdr.spa, ip, 16);
-    printf("\tspa:\t%s\n", ip);
-    mac_toStr(arp->arp_hdr.sha, mac, 18);
-    printf("\tsha:\t%s\n", mac);
-    ip_toStr(arp->arp_hdr.tpa, ip, 16);
-    printf("\tspa:\t%s\n", ip);
-    mac_toStr(arp->arp_hdr.tha, mac, 18);
-    printf("\tsha:\t%s\n", mac);
+    char sadr[16];
+    char shdr[18];
+    char tadr[16];
+    char thdr[18];
+    ip_toStr(arp->arp_hdr.spa, sadr, 16);
+    printf("\tspa:\t%s\n", sadr);
+    mac_toStr(arp->arp_hdr.sha, shdr, 18);
+    printf("\tsha:\t%s\n", shdr);
+    ip_toStr(arp->arp_hdr.tpa, tadr, 16);
+    printf("\tspa:\t%s\n", tadr);
+    mac_toStr(arp->arp_hdr.tha, thdr, 18);
+    printf("\tsha:\t%s\n", thdr);
 
     
 }
